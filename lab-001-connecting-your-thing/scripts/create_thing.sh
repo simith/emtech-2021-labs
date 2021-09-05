@@ -1,4 +1,4 @@
-WORKSHOP_TOOLS_DIR=$WORKSHOP_ROOT_DIR/workshop/tools
+
 
 # obtain sts token based on the current account
 accountId=$(aws sts get-caller-identity | jq .Account | tr -d '"' )
