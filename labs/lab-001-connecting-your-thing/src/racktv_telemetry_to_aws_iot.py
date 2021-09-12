@@ -1,15 +1,16 @@
-# Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License").
-# You may not use this file except in compliance with the License.
-# A copy of the License is located at
-#
-#  http://aws.amazon.com/apache2.0
-#
-# or in the "license" file accompanying this file. This file is distributed
-# on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-# express or implied. See the License for the specific language governing
-# permissions and limitations under the License.
+# Copyright 2021 Rackspace Technology
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#    https://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 from __future__ import absolute_import
 import argparse
@@ -47,9 +48,7 @@ class RackTv:
         self.mqtt_connection = None
         self.jobs_client = None
         self.event_queue = queue.Queue()
-        self.serial_number = "ADFD4D576C"
-
-        self.mac_address = "ADFD4D576C"
+        self.serial_number = "8B925F4192"
         self.product = "racktv"
         self.state = "ON"
         self.endpoint_address = "alzg8fuyb9yn5-ats.iot.ap-southeast-1.amazonaws.com"
@@ -75,7 +74,7 @@ class RackTv:
         now = datetime.datetime.now()
         print( color + now.strftime("%Y-%m-%d %H:%M") + ": "  + msg )
     
-    def banner(self,banner="Device Simulator"):
+    def banner(self,banner="Emtech 2021"):
         ascii_banner = pyfiglet.figlet_format(banner)
         print(ascii_banner)
 
@@ -128,6 +127,10 @@ class RackTv:
             qos=mqtt.QoS.AT_MOST_ONCE)
         print("==============================================================\n")
         
+    def get_ts(self):
+        ts_str = str(time.time()).replace('.','')[:13]
+        return int(ts_str)
+        
     
 if __name__== "__main__":
 
@@ -135,13 +138,7 @@ if __name__== "__main__":
     tv = RackTv()
     tv.banner(bannerText)
     tv.start()
-    iot_endpoint = "alzg8fuyb9yn5-ats.iot.ap-southeast-1.amazonaws.com"
-    iot_region = "ap-southeast-1"
-    
-   
-    print(f"IOT_ENDPOINT fetched from environment variable: {iot_endpoint}")
-    print(f"IOT_REGION fetched from environment variable: {iot_region}")
-    
+ 
     try:
         
         tv.connect(tv.get_serial_number(),tv.get_iot_endpoint())
@@ -150,7 +147,7 @@ if __name__== "__main__":
         while msg_id < 30:
             msg = {'msg_id': msg_id, \
                    'serial_no': tv.get_serial_number(), \
-                   "ts": time.time(), \
+                   "ts": tv.get_ts(), \
                    "product": tv.get_product_name(), \
                    "data": {
                        "state": tv.get_tv_state(), \
