@@ -1,0 +1,9 @@
+*.pem
+*.key
+*.crt
+*.json
+iotEndpoint
+policy_created.json
+thingName
+certificateId
+create_thing.log
