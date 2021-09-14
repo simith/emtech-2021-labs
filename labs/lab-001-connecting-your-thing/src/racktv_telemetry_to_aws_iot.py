@@ -51,7 +51,7 @@ class RackTv:
         self.serial_number = "YOUR_IOT_THING_NAME - thingName file in scripts folder has it"
         self.product = "racktv"
         self.state = "ON"
-        self.endpoint_address = "YOUR_IOT_ENDPOINT_NAME - iotEndpoint file in scripts folder has it""
+        self.endpoint_address = "YOUR_IOT_ENDPOINT_NAME - iotEndpoint file in scripts folder has it"
         self.timer = 30
         self.exit_simulator = False
         self.uc_subscription_done = False
