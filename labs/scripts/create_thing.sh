@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 # Get the AWS Account
 accountId=$(aws sts get-caller-identity | jq .Account | tr -d '"' )
@@ -35,3 +35,6 @@ echo "Creating Thing with thing name: ${thingNameVar}"
 $(aws iot create-thing --thing-name ${thingNameVar} >> create_thing.log)
 echo "Attaching Thing with thing name ${thingNameVar} to certificate ${certificateIdVar}"
 $(aws iot attach-thing-principal --thing-name "${thingNameVar}" --principal "${certificateArnVar}")
+
+# create the iotEndpoint
+$(aws iot describe-endpoint --endpoint-type iot:Data-ATS  | jq .endpointAddress | tr -d '"' > iotEndpoint )
