@@ -41,8 +41,8 @@ class RackTv:
     def __init__(self):
 
         self.rootCAPath = "../../../config/AmazonRootCA1.pem"
-        self.privateKeyPath = "../../scripts/privatekey.pem"
-        self.certificatePath = "../../scripts/cert.pem"
+        self.privateKeyPath = "../scripts/privatekey.pem"
+        self.certificatePath = "../scripts/cert.pem"
 
         self.mqtt_port = 8883
         self.mqtt_connection = None
