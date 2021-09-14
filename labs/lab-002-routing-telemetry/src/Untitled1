@@ -1,0 +1,20 @@
+sudo pip uninstall awscli -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.35.zip" -o "awscliv2.zip"
+unzip -f awscliv2.zip
+sudo ./aws/install
+export PATH=/usr/local/aws-cli/v2/2.2.35/bin:$PATH
+python3 -m pip install awsiotsdk 
+sudo yum install jq -y
+sudo yum install openssl-devel -y
+sudo yum groupinstall "Development Tools" -y
+sudo yum install cmake -y
+git clone https://github.com/DaveGamble/cJSON.git
+cd cJSON
+mkdir build
+cd build
+cmake .. -DENABLE_CJSON_UTILS=On -DENABLE_CJSON_TEST=Off -DCMAKE_INSTALL_PREFIX=/usr
+sudo make install
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -P /tmp
+sudo yum install -y /tmp/epel-release-latest-7.noarch.rpm -y
+sudo yum install libwebsockets -y
+sudo yum install mosquitto mosquitto-clients -y
