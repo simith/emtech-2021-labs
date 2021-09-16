@@ -140,6 +140,7 @@ class RackTv:
                 start_job_now = False
                 with self.locked_data.lock:
                     if self.locked_data.is_working_on_job:
+                        print("We are already working on a Job....")
                         self.locked_data.is_next_job_waiting = True
                     else:
                         start_job_now = True
@@ -155,7 +156,7 @@ class RackTv:
         
         
     def try_start_next_job(self):
-        print("Trying to start the next job...")
+        print("Trying to start the next job...{}".format( self.locked_data.is_working_on_job))
         with self.locked_data.lock:
             if self.locked_data.is_working_on_job:
                 print("Nevermind, already working on a job.")
