@@ -48,10 +48,10 @@ class RackTv:
         self.mqtt_connection = None
         self.jobs_client = None
         self.event_queue = queue.Queue()
-        self.serial_number = "YOUR_IOT_THING_NAME - thingName file in scripts folder has it"
+        self.serial_number = "594B341995"
         self.product = "racktv"
         self.state = "ON"
-        self.endpoint_address = "YOUR_IOT_ENDPOINT_NAME - iotEndpoint file in scripts folder has it"
+        self.endpoint_address = "a3ixr4lgf65v25-ats.iot.ap-southeast-1.amazonaws.com"
         self.timer = 30
         self.exit_simulator = False
         self.uc_subscription_done = False
