@@ -41,17 +41,17 @@ class RackTv:
     def __init__(self):
 
         self.rootCAPath = "../../../config/AmazonRootCA1.pem"
-        self.privateKeyPath = "../../scripts/privatekey.pem"
-        self.certificatePath = "../../scripts/cert.pem"
+        self.privateKeyPath = "../../lab-001-connecting-your-thing/scripts/privatekey.pem"
+        self.certificatePath = "../../lab-001-connecting-your-thing/scripts/cert.pem"
 
         self.mqtt_port = 8883
         self.mqtt_connection = None
         self.jobs_client = None
         self.event_queue = queue.Queue()
-        self.serial_number = "8B925F4192"
+        self.serial_number = "YOUR_IOT_THING_NAME - thingName file in scripts folder has it"
         self.product = "racktv"
         self.state = "ON"
-        self.endpoint_address = "alzg8fuyb9yn5-ats.iot.ap-southeast-1.amazonaws.com"
+        self.endpoint_address = "YOUR_IOT_ENDPOINT_NAME - iotEndpoint file in scripts folder has it"
         self.timer = 30
         self.exit_simulator = False
         self.uc_subscription_done = False

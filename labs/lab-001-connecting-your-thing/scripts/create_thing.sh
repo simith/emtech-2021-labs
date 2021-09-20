@@ -32,7 +32,7 @@ echo $thingNameVar > thingName
 
 # create a thing name
 echo "Creating Thing with thing name: ${thingNameVar}"
-$(aws iot create-thing --thing-name ${thingNameVar} >> create_thing.log)
+$(aws iot create-thing --thing-name ${thingNameVar} | jq .thingArn | tr -d '"' >> thingArn)
 echo "Attaching Thing with thing name ${thingNameVar} to certificate ${certificateIdVar}"
 $(aws iot attach-thing-principal --thing-name "${thingNameVar}" --principal "${certificateArnVar}")
 
