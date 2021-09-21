@@ -145,8 +145,8 @@ if __name__== "__main__":
         topic = 'app/racktv/'+ tv.get_serial_number() + '/telemetry'
         msg_id = 1
         while msg_id < 30:
-            msg = {'msg_id': msg_id, \
-                   'serial_no': tv.get_serial_number(), \
+            msg = {"msg_id": msg_id, \
+                   "serial_no": tv.get_serial_number(), \
                    "ts": tv.get_ts(), \
                    "product": tv.get_product_name(), \
                    "data": {
