@@ -31,6 +31,7 @@ thingNameVar=$(cat certificateId | cut -c1-10 | tr [a-z] [A-Z])
 echo $thingNameVar > thingName
 
 #create a thing-type for RackTV
+echo "Creating Thing type with name: RACKTV"
 $(aws iot create-thing-type --thing-type-name RACKTV >> thingType)
 
 # create a thing name
