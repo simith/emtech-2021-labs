@@ -30,9 +30,12 @@ $(aws iot attach-policy --policy-name "${certificateIdVar}-iot-policy" --target 
 thingNameVar=$(cat certificateId | cut -c1-10 | tr [a-z] [A-Z])
 echo $thingNameVar > thingName
 
+#create a thing-type for RackTV
+$(aws iot create-thing-type --thing-type-name RACKTV >> thingType)
+
 # create a thing name
 echo "Creating Thing with thing name: ${thingNameVar}"
-$(aws iot create-thing --thing-name ${thingNameVar} | jq .thingArn | tr -d '"' >> thingArn)
+$(aws iot create-thing --thing-name ${thingNameVar} --thing-type-name "RACKTV" | jq .thingArn | tr -d '"' >> thingArn)
 echo "Attaching Thing with thing name ${thingNameVar} to certificate ${certificateIdVar}"
 $(aws iot attach-thing-principal --thing-name "${thingNameVar}" --principal "${certificateArnVar}")
 
